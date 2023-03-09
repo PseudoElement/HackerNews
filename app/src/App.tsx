@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import AppRouter from "./router/AppRouter";
 
 function App() {
-     const navigate = useNavigate();
-
      // const fetchStoriesById = async () => {
      //      const latestStoriesUrl = "https://hacker-news.firebaseio.com/v0/newstories.json";
 
@@ -21,10 +19,6 @@ function App() {
      //      );
      //      setStories(latestStories);
      // };
-
-     React.useEffect(() => {
-          navigate("/news");
-     }, []);
 
      return <AppRouter />;
 }

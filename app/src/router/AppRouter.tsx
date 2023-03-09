@@ -5,8 +5,8 @@ import NewsById from "../pages/NewsById";
 const AppRouter = () => {
      return (
           <Routes>
-               <Route path="/news" element={<News />} />
-               <Route path="/news/:id" element={<NewsById />} />
+               <Route path="/" element={<News />} />
+               <Route path="/:id" element={<NewsById />} />
           </Routes>
      );
 };
