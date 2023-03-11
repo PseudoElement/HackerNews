@@ -1,7 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetNewsByIdQuery, useLazyGetCommentQuery } from "../store/api/hackerNews";
+import { OneNews } from "../store/reducers/newsSlice";
 import { IComment } from "../store/types/types";
+import CardById from "../UI/features/CardById";
 import styles from "./styles/newsStyle.module.css";
 
 const NewsById = () => {
@@ -22,7 +24,7 @@ const NewsById = () => {
           }
      }, [data]);
 
-     return <div className={styles.newsByIdWrapper}>NEWS {id}</div>;
+     return <div className={styles.newsByIdWrapper}>{data && <CardById data={data} />}</div>;
 };
 
 export default NewsById;

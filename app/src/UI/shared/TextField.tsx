@@ -7,7 +7,8 @@ enum TextFieldTags {
 }
 enum TextFieldTypes {
      author = "author",
-     error = "error"
+     error = "error",
+     commentsCount = "commentsCount"
 }
 
 interface ITextField {
@@ -16,10 +17,11 @@ interface ITextField {
      type?: keyof typeof TextFieldTypes;
 }
 
-const TextField: FC<ITextField> = ({ Tag = "h2", text, type }) => {
+const TextField: FC<ITextField> = ({ Tag = "h3", text, type }) => {
      return (
           <Tag className={`${styles[Tag]} ${type && styles[type]}`}>
                {type === "author" && "Published by "}
+               {type === "commentsCount" && "Comments: "}
                {text}
           </Tag>
      );

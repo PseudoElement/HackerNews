@@ -1,3 +1,5 @@
+import { OneNews } from "../reducers/newsSlice";
+
 export interface IComment {
      by: string;
      id: number;

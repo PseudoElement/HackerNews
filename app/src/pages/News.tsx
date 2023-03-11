@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/types";
 import { useGetIdsAllNewsQuery, useLazyGetNewsByIdQuery } from "../store/api/hackerNews";
-import { OneNews, setNewsArr } from "../store/reducers/newsSlice";
+import { setNewsArr } from "../store/reducers/newsSlice";
 import Card from "../UI/features/Card";
 import Loader from "../UI/shared/Loader";
 import { IFetchInfo } from "./types/NewsTypes";
