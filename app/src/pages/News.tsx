@@ -17,7 +17,7 @@ const News = () => {
      } = useGetIdsAllNewsQuery(null, {
           pollingInterval: 1000
      });
-     const [getNewsById, { isError: isErrorNews, isLoading: isLoadingNews }] = useLazyGetNewsByIdQuery();
+     const [getNewsById, { isLoading: isLoadingNews }] = useLazyGetNewsByIdQuery();
      const dispatch = useAppDispatch();
      const news = useAppSelector((state) => state.newsSlice.news);
      const [fetchInfo, setFetchInfo] = React.useState<IFetchInfo>({ error: "", isLoading: false });
@@ -43,8 +43,10 @@ const News = () => {
      }, [IdsAllNews]);
      return (
           <>
-               <ButtonRefetch text="REFETCH" onClick={fetch100News} />
-               {(isLoadingNews || fetchInfo.isLoading) && <Loader />}
+               <div className={styles.header}>
+                    <ButtonRefetch text="REFETCH" onClick={fetch100News} />
+                    {(isLoadingNews || fetchInfo.isLoading) && <Loader />}
+               </div>
                <div className={styles.newsWrapper}>
                     {isErrorIds || fetchInfo.error ? (
                          <TextField text="SOMETHING GOT WRONG..." type="error" />

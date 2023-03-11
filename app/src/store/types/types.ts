@@ -7,4 +7,6 @@ export interface IComment {
      text: string;
      time: number;
      type: string;
+     kids?: Array<number>;
+     deleted?: boolean;
 }

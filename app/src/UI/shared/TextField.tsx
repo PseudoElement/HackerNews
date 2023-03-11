@@ -3,12 +3,14 @@ import styles from "./styles/styles.module.css";
 
 enum TextFieldTags {
      h2 = "h2",
-     h3 = "h3"
+     h3 = "h3",
+     h1 = "h1"
 }
 enum TextFieldTypes {
      author = "author",
      error = "error",
-     commentsCount = "commentsCount"
+     commentsCount = "commentsCount",
+     deletedComment = "deletedComment"
 }
 
 interface ITextField {

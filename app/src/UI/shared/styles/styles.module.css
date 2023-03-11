@@ -2,12 +2,9 @@
      color: brown;
 }
 .h3 {
-     color: orange;
+     color: green;
 }
 .loader {
-     position: absolute;
-     top: 10px;
-     left: 50%;
 }
 
 .error {
@@ -17,3 +14,12 @@
      font-style: oblique;
      color: blueviolet;
 }
+
+.deletedComment {
+     text-shadow: 5px 5px 10px gray;
+}
+/* .buttonBack {
+     position: absolute;
+     top: 10px;
+     right: 10px;
+} */

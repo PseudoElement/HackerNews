@@ -14,7 +14,7 @@ const CardById: FC<ICardById> = ({ data }) => {
      return (
           <CardMUI className={styles.cardById}>
                <TextField text={data.title} Tag="h2" />
-               <Link url={data.url} />
+               {data.url && <Link url={data.url} />}
                <TextField text={data.by} type="author" />
                <TextField text={convertTime(data.time)} />
                <TextField text={data?.kids?.length || "0"} type="commentsCount" />
