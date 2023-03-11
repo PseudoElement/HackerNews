@@ -18,6 +18,7 @@
 .deletedComment {
      text-shadow: 5px 5px 10px gray;
 }
-.answer {
+.answer,
+.rootComment {
      margin-bottom: 15px;
 }
