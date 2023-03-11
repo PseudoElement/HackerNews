@@ -58,7 +58,7 @@ const NewsById = () => {
                          {rootComments.length
                               ? rootComments.map((comment) => {
                                      return (
-                                          <div className={styles.commentWithAnswersWrapper}>
+                                          <div key={comment?.id} className={styles.commentWithAnswersWrapper}>
                                                <div>
                                                     <Comment data={comment!} />
                                                     <ButtonShowAnswers commentId={comment!.id} kids={comment?.kids} />
@@ -73,7 +73,7 @@ const NewsById = () => {
                                                          {answers
                                                               .find((answer: AnswersOfComment) => answer.parentId === comment?.id)
                                                               .children.map((childrenComment: IComment) => (
-                                                                   <Comment data={childrenComment} type="answer" />
+                                                                   <Comment key={childrenComment.id} data={childrenComment} type="answer" />
                                                               ))}
                                                     </div>
                                                ) : (
