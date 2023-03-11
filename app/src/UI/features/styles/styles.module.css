@@ -45,3 +45,13 @@
      flex-direction: column;
      justify-content: space-between;
 }
+
+.answer {
+     margin-bottom: 10px;
+     border-bottom: 1px solid black;
+     padding: 10px;
+     font-size: 13px;
+}
+.answer:first-child {
+     color: red;
+}

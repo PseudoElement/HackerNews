@@ -15,9 +15,6 @@
      align-items: center;
 }
 .commentsWrapper {
-     /* display: flex;
-     flex-direction: column;
-     align-items: center; */
      width: 100%;
      padding: 20px;
      box-sizing: border-box;
@@ -26,12 +23,6 @@
      padding: 10px;
      width: 100%;
 }
-/* .commentsHeader {
-     width: 100%;
-     display: flex;
-     align-items: center;
-     flex-direction: column;
-} */
 .commentWithAnswersWrapper {
      border: 1px solid gray;
      border-radius: 10px;
@@ -46,10 +37,13 @@
 .header {
      display: flex;
      align-items: center;
+     flex-direction: column;
 }
 .refetchAndLoaderLayer {
+     margin-top: 10px;
      display: flex;
      align-items: center;
+     flex-direction: column;
 }
 .generalWrapper {
      padding: 20px;

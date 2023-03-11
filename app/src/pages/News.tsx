@@ -10,11 +10,7 @@ import ButtonRefetch from "../UI/shared/ButtonRefetch";
 import TextField from "../UI/shared/TextField";
 
 const News = () => {
-     const {
-          data: IdsAllNews,
-          isLoading: isLoadingIds,
-          isError: isErrorIds
-     } = useGetIdsAllNewsQuery(null, {
+     const { data: IdsAllNews, isError: isErrorIds } = useGetIdsAllNewsQuery(null, {
           pollingInterval: 1000
      });
      const [getNewsById, { isLoading: isLoadingNews }] = useLazyGetNewsByIdQuery();

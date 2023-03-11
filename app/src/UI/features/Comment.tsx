@@ -4,16 +4,22 @@ import { decodeText } from "../../utils/decodeText";
 import TextField from "../shared/TextField";
 import styles from "./styles/styles.module.css";
 
-interface ICommentProps {
-     data: IComment;
+enum CommentTypes {
+     answer = "answer",
+     rootComment = "rootComment"
 }
 
-const Comment: FC<ICommentProps> = ({ data }) => {
+interface ICommentProps {
+     data: IComment;
+     type?: keyof typeof CommentTypes;
+}
+
+const Comment: FC<ICommentProps> = ({ data, type = "rootComment" }) => {
      return (
-          <div className={styles.comment}>
+          <div className={`${styles.comment} ${type && styles[type]}`}>
                {!data.deleted ? (
                     <>
-                         <TextField Tag="h2" text={data.by} />
+                         <TextField Tag="h2" text={data.by} type={type} />
                          <TextField text={decodeText(data.text)} />
                     </>
                ) : (

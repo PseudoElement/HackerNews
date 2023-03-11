@@ -73,7 +73,7 @@ const NewsById = () => {
                                                          {answers
                                                               .find((answer: AnswersOfComment) => answer.parentId === comment?.id)
                                                               .children.map((childrenComment: IComment) => (
-                                                                   <Comment data={childrenComment} />
+                                                                   <Comment data={childrenComment} type="answer" />
                                                               ))}
                                                     </div>
                                                ) : (

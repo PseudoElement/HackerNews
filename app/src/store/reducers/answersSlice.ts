@@ -6,7 +6,6 @@ export interface AnswersOfComment {
      children: Array<IComment | undefined> | string;
 }
 
-// type InitialStateType = Array<AnswersOfComment> | never[]
 const initialState: Array<AnswersOfComment> | { answers: any } = {
      answers: []
 };

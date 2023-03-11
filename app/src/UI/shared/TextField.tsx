@@ -10,7 +10,9 @@ enum TextFieldTypes {
      author = "author",
      error = "error",
      commentsCount = "commentsCount",
-     deletedComment = "deletedComment"
+     deletedComment = "deletedComment",
+     answer = "answer",
+     rootComment = "rootComment"
 }
 
 interface ITextField {
