@@ -12,12 +12,12 @@ import TextField from "../UI/shared/TextField";
 const News = () => {
      const {
           data: IdsAllNews,
-          isLoading,
-          isError: errorIds
+          isLoading: isLoadingIds,
+          isError: isErrorIds
      } = useGetIdsAllNewsQuery(null, {
           pollingInterval: 1000
      });
-     const [getNewsById, { isError: errorNews }] = useLazyGetNewsByIdQuery();
+     const [getNewsById, { isError: isErrorNews, isLoading: isLoadingNews }] = useLazyGetNewsByIdQuery();
      const dispatch = useAppDispatch();
      const news = useAppSelector((state) => state.newsSlice.news);
      const [fetchInfo, setFetchInfo] = React.useState<IFetchInfo>({ error: "", isLoading: false });
@@ -26,12 +26,8 @@ const News = () => {
           setFetchInfo((prev) => ({ ...prev, isLoading: true }));
           try {
                setFetchInfo((prev) => ({ ...prev, error: "" }));
-               const news = await Promise.all(
-                    IdsAllNews.slice(0, 100).map((id: number) => {
-                         return getNewsById(id);
-                    })
-               );
-               const correctedNews = news.map(({ data }: { data: OneNews }) => data).sort((a, b) => b.time - a.time);
+               const news = await Promise.all(IdsAllNews!.slice(0, 100).map((id: number) => getNewsById(id)));
+               const correctedNews = news.map(({ data }) => data).sort((a, b) => b!.time - a!.time);
                dispatch(setNewsArr(correctedNews));
           } catch (e: any) {
                setFetchInfo((prev) => ({ ...prev, error: e.message }));
@@ -48,9 +44,9 @@ const News = () => {
      return (
           <>
                <ButtonRefetch text="REFETCH" onClick={fetch100News} />
-               {(fetchInfo.isLoading || isLoading) && <Loader />}
+               {(isLoadingNews || fetchInfo.isLoading) && <Loader />}
                <div className={styles.newsWrapper}>
-                    {errorIds || errorNews ? (
+                    {isErrorIds || fetchInfo.error ? (
                          <TextField text="SOMETHING GOT WRONG..." type="error" />
                     ) : (
                          news.map((item) => {
