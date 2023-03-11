@@ -6,7 +6,7 @@ import styles from "./styles/styles.module.css";
 const ButtonBack = () => {
      return (
           <Link className={styles.buttonBack} to={`/`}>
-               <Button variant="outlined">BACK</Button>
+               <Button variant="text">BACK</Button>
           </Link>
      );
 };

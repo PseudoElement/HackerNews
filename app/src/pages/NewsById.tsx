@@ -40,9 +40,6 @@ const NewsById = () => {
                fetchAllrootComments();
           }
      }, [data]);
-     React.useEffect(() => {
-          console.log("ANSWERS", answers);
-     }, [answers]);
      return (
           <div className={styles.newsByIdWrapper}>
                {isError && <TextField type="error" text="SOMETHING GOT WRONG..." />}

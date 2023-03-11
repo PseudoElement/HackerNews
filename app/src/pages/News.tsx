@@ -42,7 +42,7 @@ const News = () => {
           }
      }, [IdsAllNews]);
      return (
-          <>
+          <div className={styles.generalWrapper}>
                <div className={styles.header}>
                     <ButtonRefetch text="REFETCH" onClick={fetch100News} />
                     {(isLoadingNews || fetchInfo.isLoading) && <Loader />}
@@ -58,7 +58,7 @@ const News = () => {
                          })
                     )}
                </div>
-          </>
+          </div>
      );
 };
 

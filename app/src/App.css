@@ -2,5 +2,12 @@ a {
      text-decoration: none;
 }
 * {
+     margin: 0;
+     padding: 0;
      font-family: "Golos Text", sans-serif;
+}
+#root {
+     background: rgb(238, 236, 236);
+     background-size: cover;
+     min-height: 100vh;
 }

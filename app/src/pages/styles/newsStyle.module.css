@@ -14,15 +14,24 @@
      justify-content: center;
      align-items: center;
 }
-.commentsMain {
-     padding: 10px;
-}
-.commentsHeader {
+.commentsWrapper {
      /* display: flex;
-     justify-content: space-between;
+     flex-direction: column;
      align-items: center; */
      width: 100%;
+     padding: 20px;
+     box-sizing: border-box;
 }
+.commentsMain {
+     padding: 10px;
+     width: 100%;
+}
+/* .commentsHeader {
+     width: 100%;
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+} */
 .commentWithAnswersWrapper {
      border: 1px solid gray;
      border-radius: 10px;
@@ -41,4 +50,7 @@
 .refetchAndLoaderLayer {
      display: flex;
      align-items: center;
+}
+.generalWrapper {
+     padding: 20px;
 }

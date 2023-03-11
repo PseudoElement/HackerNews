@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { IComment } from "../../store/types/types";
+import { decodeText } from "../../utils/decodeText";
 import TextField from "../shared/TextField";
 import styles from "./styles/styles.module.css";
 
@@ -13,7 +14,7 @@ const Comment: FC<ICommentProps> = ({ data }) => {
                {!data.deleted ? (
                     <>
                          <TextField Tag="h2" text={data.by} />
-                         <TextField text={data.text} />
+                         <TextField text={decodeText(data.text)} />
                     </>
                ) : (
                     <TextField text="Comment was deleted." Tag="h1" type="deletedComment" />

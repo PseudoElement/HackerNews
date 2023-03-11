@@ -29,6 +29,9 @@ const ButtonShowAnswers: FC<IButtonShowAnswersProps> = ({ kids, commentId }) => 
           }
      };
 
+     React.useEffect(() => {
+          console.log("ANSWERS", answers);
+     }, [answers]);
      return (
           <Button onClick={() => fetchAnswers()} variant="text">
                SHOW ANSWERS
