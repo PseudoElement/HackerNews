@@ -1,0 +1,19 @@
+.h2 {
+     color: brown;
+}
+.h3 {
+     color: orange;
+}
+.loader {
+     position: absolute;
+     top: 10px;
+     left: 50%;
+}
+
+.error {
+     color: red;
+}
+.author {
+     font-style: oblique;
+     color: blueviolet;
+}

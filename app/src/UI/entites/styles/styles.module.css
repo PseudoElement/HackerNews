@@ -1,0 +1,7 @@
+.ratingWrapper {
+     display: flex;
+     align-items: center;
+}
+.stars {
+     margin-left: 15px;
+}

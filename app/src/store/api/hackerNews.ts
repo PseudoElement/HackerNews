@@ -9,8 +9,15 @@ export const hackerNewsApi = createApi({
           }),
           getNewsById: builder.query({
                query: (storyId) => `/item/${storyId}.json`
+          }),
+          getComments: builder.query({
+               query: (storyId) => {
+                    return {
+                         url: `/item/${storyId}.json?print=pretty`
+                    };
+               }
           })
      })
 });
 
-export const { useGetIdsAllNewsQuery, useLazyGetNewsByIdQuery } = hackerNewsApi;
+export const { useGetIdsAllNewsQuery, useLazyGetNewsByIdQuery, useGetNewsByIdQuery, useGetCommentsQuery } = hackerNewsApi;

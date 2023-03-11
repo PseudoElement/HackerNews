@@ -2,14 +2,22 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/types";
 import { useGetIdsAllNewsQuery, useLazyGetNewsByIdQuery } from "../store/api/hackerNews";
 import { OneNews, setNewsArr } from "../store/reducers/newsSlice";
-import Loader from "../UI/shared/Backdrop";
+import Card from "../UI/features/Card";
+import Loader from "../UI/shared/Loader";
 import { IFetchInfo } from "./types/NewsTypes";
+import styles from "./styles/newsStyle.module.css";
+import ButtonRefetch from "../UI/shared/ButtonRefetch";
+import TextField from "../UI/shared/TextField";
 
 const News = () => {
-     const { data: IdsAllNews, isLoading: isLoadingIdsAllNews } = useGetIdsAllNewsQuery(null, {
-          // pollingInterval: 1000
+     const {
+          data: IdsAllNews,
+          isLoading,
+          isError: errorIds
+     } = useGetIdsAllNewsQuery(null, {
+          pollingInterval: 1000
      });
-     const [getNewsById] = useLazyGetNewsByIdQuery();
+     const [getNewsById, { isError: errorNews }] = useLazyGetNewsByIdQuery();
      const dispatch = useAppDispatch();
      const news = useAppSelector((state) => state.newsSlice.news);
      const [fetchInfo, setFetchInfo] = React.useState<IFetchInfo>({ error: "", isLoading: false });
@@ -23,7 +31,7 @@ const News = () => {
                          return getNewsById(id);
                     })
                );
-               const correctedNews = news.map(({ data }: { data: OneNews }) => data);
+               const correctedNews = news.map(({ data }: { data: OneNews }) => data).sort((a, b) => b.time - a.time);
                dispatch(setNewsArr(correctedNews));
           } catch (e: any) {
                setFetchInfo((prev) => ({ ...prev, error: e.message }));
@@ -37,24 +45,22 @@ const News = () => {
                fetch100News();
           }
      }, [IdsAllNews]);
-
-     React.useEffect(() => {
-          console.log("IS LOAD", fetchInfo.isLoading);
-     }, [fetchInfo.isLoading]);
      return (
-          <div>
-               {(fetchInfo.isLoading || isLoadingIdsAllNews) && <Loader />}
-               {news.map((item) => {
-                    return (
-                         <div key={item.id} style={{ border: "2px solid black" }}>
-                              <h1>{item.title}</h1>
-                              <h2>{item.time}</h2>
-                              <h2>{item.url}</h2>
-                              <h2>{item.by}</h2>
-                         </div>
-                    );
-               })}
-          </div>
+          <>
+               <ButtonRefetch text="REFETCH" onClick={fetch100News} />
+               {(fetchInfo.isLoading || isLoading) && <Loader />}
+               <div className={styles.newsWrapper}>
+                    {errorIds || errorNews ? (
+                         <TextField text="SOMETHING GOT WRONG..." type="error" />
+                    ) : (
+                         news.map((item) => {
+                              if (item !== null) {
+                                   return <Card key={item.id} data={item} />;
+                              }
+                         })
+                    )}
+               </div>
+          </>
      );
 };
 
