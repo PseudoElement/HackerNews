@@ -9,7 +9,7 @@ interface IButtonCard {
 
 const ButtonCard: FC<IButtonCard> = ({ text, id }) => {
      return (
-          <Link to={`/${id}`}>
+          <Link to={`/news/${id}`}>
                <Button variant="text">{text}</Button>
           </Link>
      );
